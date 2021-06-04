@@ -1,6 +1,6 @@
 #include "cEncargado.h"
 
-cEncargado::cEncargado(int cuit): cEmpleado(cuit)
+cEncargado::cEncargado(string cuit): cEmpleado(cuit)
 {
 	SalarioxHora = 300;
 }

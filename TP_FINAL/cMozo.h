@@ -5,7 +5,7 @@ class cMozo :
     public cEmpleado
 {
 public:
-    cMozo(int cuit);
+    cMozo(string cuit);
     ~cMozo() {};
 
     int CalcularHorasTrabajadas() const override;

@@ -5,7 +5,7 @@ class cEncargado :
     public cEmpleado
 {
 public:
-    cEncargado(int cuit);
+    cEncargado(string cuit);
     ~cEncargado() {};
 
     int CalcularHorasTrabajadas() const override;

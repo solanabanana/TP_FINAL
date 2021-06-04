@@ -1,3 +1,3 @@
 #include "cEmpleado.h"
 #include "cFecha.h"
-cEmpleado::cEmpleado(int cuit): CUIT(cuit) {}
+cEmpleado::cEmpleado(string cuit): CUIT(cuit) {}

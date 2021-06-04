@@ -1,6 +1,6 @@
 #include "cMozo.h"
 
-cMozo::cMozo(int cuit): cEmpleado(cuit)
+cMozo::cMozo(string cuit): cEmpleado(cuit)
 {
 	SalarioxHora = 150;
 }

@@ -29,7 +29,7 @@ public:
 	T* BuscarObjeto(string clave);
 	//sobrecarga de operadores
 	void operator+(T* objeto);
-	T* operator-(T* objeto);
+	void operator-(T* objeto);
 	T* operator[](string clave)
 	{
 		return BuscarObjeto(clave);
@@ -96,9 +96,9 @@ inline void cListaT<T>::operator+(T* objeto)
 	}
 }
 template<class T>
-inline T* cListaT<T>::operator-(T* objeto)
+inline void cListaT<T>::operator-(T* objeto)
 {
-	QuitarObjeto(objeto->getClave());
+	EliminarObjeto(objeto->getClave());
 }
 template<class T>
 inline void cListaT<T>::Redimensionar()

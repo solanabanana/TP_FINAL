@@ -31,24 +31,24 @@ int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAI
 	nueva_cerveza = new cCerveza(eCerveza::IPA, 14);
 	*cervezas_puntoventa + nueva_cerveza;
 	//Creamos encargados para bar y punto de venta
-	cEmpleado* encargado_bar = new cEncargado(234);
-	cEmpleado* encargado_puntoventa = new cEncargado(456);
+	cEmpleado* encargado_bar = new cEncargado("234");
+	cEmpleado* encargado_puntoventa = new cEncargado("456");
 	//Listas de empleados para los locales
 	cListaT<cEmpleado> *empleados_bar = new cListaT<cEmpleado>();
 	cListaT<cEmpleado> *empleados_puntoventa = new cListaT<cEmpleado>();
 	//Creamos dos vendedores para cada local y los agregamos a las listas
 	cEmpleado* nuevo_empleado;
-	nuevo_empleado = new cVendedor(321);
+	nuevo_empleado = new cVendedor("321");
 	*empleados_bar + nuevo_empleado;
-	nuevo_empleado = new cVendedor(654);
+	nuevo_empleado = new cVendedor("654");
 	*empleados_bar + nuevo_empleado;
-	nuevo_empleado = new cVendedor(987);
+	nuevo_empleado = new cVendedor("987");
 	*empleados_puntoventa + nuevo_empleado;
-	nuevo_empleado = new cVendedor(765);
+	nuevo_empleado = new cVendedor("765");
 	*empleados_puntoventa + nuevo_empleado;
-	nuevo_empleado = new cMozo(564);
+	nuevo_empleado = new cMozo("564");
 	*empleados_bar + nuevo_empleado;
-	nuevo_empleado = new cMozo(865);
+	nuevo_empleado = new cMozo("865");
 	*empleados_bar + nuevo_empleado;
 	//Creamos la lista de mesas para el bar con tres mesas
 	cListaT<cMesa>* mesas = new cListaT<cMesa>();
@@ -69,8 +69,8 @@ int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAI
 	cCerveceria* Pride = new cCerveceria(*locales);
 	//Simulacion de llegada de clientes y actualizacion de datos
 	Pride->TICK();
-	//Se va un mozo del bar
-	*empleados_bar - empleados_bar[0][865];
+	//Renuncia un mozo del bar
+	*empleados_bar - empleados_bar[0]["865"];
 	Pride->TICK();
 	Pride->TICK();
 
@@ -79,7 +79,7 @@ int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAI
 	Pride->FinalizarJornada();
 	//Liberamos la memoria que utilizamos en el main
 	delete nueva_cerveza;
-	delete nuevo_empleado;
+	//delete nuevo_empleado; Lo comentamos porque justo borramos el empleado que estaba apuntando nuevo_empleado
 	delete encargado_bar;
 	delete encargado_puntoventa;
 	delete nueva_mesa;

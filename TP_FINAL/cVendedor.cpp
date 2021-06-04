@@ -1,6 +1,6 @@
 #include "cVendedor.h"
 
-cVendedor::cVendedor(int cuit): cEmpleado(cuit)
+cVendedor::cVendedor(string cuit): cEmpleado(cuit)
 {
 	SalarioxHora = 200;
 }
