@@ -18,5 +18,70 @@
     <ClCompile Include="TP_FINAL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cCerveceria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cListaT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cEmpleado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cVendedor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cEncargado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cMozo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cLocal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cPuntoDeVenta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cCerveceria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cCerveza.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cMesa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cFecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cListaT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cEmpleado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cVendedor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cEncargado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cMozo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cLocal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cPuntoDeVenta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

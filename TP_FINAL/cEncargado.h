@@ -1,0 +1,15 @@
+#pragma once
+#include "cEmpleado.h"
+using namespace std;
+class cEncargado :
+    public cEmpleado
+{
+public:
+    cEncargado(int cuit);
+    ~cEncargado() {};
+
+    int CalcularHorasTrabajadas() const override;
+    int CalcularSalario() const override;
+    int CalcularCantBarriles();
+};
+

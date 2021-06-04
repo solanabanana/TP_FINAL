@@ -139,7 +139,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cBar.cpp" />
+    <ClCompile Include="cCerveceria.cpp" />
+    <ClCompile Include="cEmpleado.cpp" />
+    <ClCompile Include="cEncargado.cpp" />
+    <ClCompile Include="cListaT.cpp" />
+    <ClCompile Include="cLocal.cpp" />
+    <ClCompile Include="cMozo.cpp" />
+    <ClCompile Include="cPuntoDeVenta.cpp" />
+    <ClCompile Include="cVendedor.cpp" />
     <ClCompile Include="TP_FINAL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cBar.h" />
+    <ClInclude Include="cCerveceria.h" />
+    <ClInclude Include="cCerveza.h" />
+    <ClInclude Include="cEmpleado.h" />
+    <ClInclude Include="cEncargado.h" />
+    <ClInclude Include="cFecha.h" />
+    <ClInclude Include="cListaT.h" />
+    <ClInclude Include="cLocal.h" />
+    <ClInclude Include="cMesa.h" />
+    <ClInclude Include="cMozo.h" />
+    <ClInclude Include="cPuntoDeVenta.h" />
+    <ClInclude Include="cVendedor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
