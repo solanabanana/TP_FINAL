@@ -5,16 +5,23 @@ cMozo::cMozo(string cuit): cEmpleado(cuit)
 	SalarioxHora = 150;
 }
 
-int cMozo::CalcularHorasTrabajadas() const
+void cMozo::CalcularHorasTrabajadas()// const
 {
-	return 0;
+	int horaE = Entrada.getHora();
+	int horaS = Salida.getHora();
+	int total = horaS - horaE;
+	setHoras(total);
 }
 
-int cMozo::CalcularSalario() const
+void cMozo::CalcularSalario()// const
 {
-	return 0;
+	int aux = 0;
+	aux = (SalarioxHora * getHoras());
+	setSalario(aux);
 }
 
 void cMozo::LimpiarMesa(int NumMesa)
 {
+	//si hay una lista de mesas que busque la mesa que esta sucia y llame al setter para limpiarla
+	//que reciba una mesa no el numero y que la limpie
 }

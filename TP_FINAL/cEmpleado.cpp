@@ -1,3 +1,11 @@
 #include "cEmpleado.h"
 #include "cFecha.h"
-cEmpleado::cEmpleado(string cuit): CUIT(cuit) {}
+
+using namespace std;
+
+cEmpleado::cEmpleado(string cuit, int salario):CUIT(cuit)
+{
+	this->SalarioxHora = salario;
+	Horas_trabajadas = 0;
+}
+

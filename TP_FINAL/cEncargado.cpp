@@ -1,21 +1,48 @@
 #include "cEncargado.h"
+using namespace std;
+#include "cCerveza.h"
+#include "cLocal.h"
+#include "cPuntoDeVenta.h"
+#include "cBar.h"
+
+#define NMIN 3
 
 cEncargado::cEncargado(string cuit): cEmpleado(cuit)
 {
 	SalarioxHora = 300;
 }
 
-int cEncargado::CalcularHorasTrabajadas() const
+
+void cEncargado::CalcularHorasTrabajadas()//const
 {
-	return 0;
+	int horaE = Entrada.getHora();
+	int horaS = Salida.getHora();
+	int total = horaS - horaE;
+	setHoras(total);
 }
 
-int cEncargado::CalcularSalario() const
+void cEncargado::CalcularSalario()// const
 {
-	return 0;
+	int aux = 0;
+	aux = (SalarioxHora * getHoras());
+	setSalario(aux);
 }
 
-int cEncargado::CalcularCantBarriles()
+void cEncargado::CalcularCantBarriles(cCerveza cerveza, cLocal* local)
 {
-	return 0;
+
+	cBar* bar = dynamic_cast<cBar*>(local);
+	cPuntoDeVenta* venta = dynamic_cast<cPuntoDeVenta*>(local);
+	if (cerveza.getCant() < NMIN)
+	{
+		if (bar != NULL)
+		{
+			bar->SolicitarCerveza();
+		}
+		if (venta != NULL)
+		{
+			venta->SolicitarCerveza();
+		}
+
+	}
 }

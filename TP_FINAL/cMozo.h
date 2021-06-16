@@ -8,8 +8,8 @@ public:
     cMozo(string cuit);
     ~cMozo() {};
 
-    int CalcularHorasTrabajadas() const override;
-    int CalcularSalario() const override;
+    void CalcularHorasTrabajadas();// const override;
+    void CalcularSalario();// const override;
     void LimpiarMesa(int NumMesa);
 };
 

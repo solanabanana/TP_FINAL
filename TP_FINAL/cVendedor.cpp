@@ -5,12 +5,17 @@ cVendedor::cVendedor(string cuit): cEmpleado(cuit)
 	SalarioxHora = 200;
 }
 
-int cVendedor::CalcularHorasTrabajadas() const
+void cVendedor::CalcularHorasTrabajadas()// const
 {
-	return 0;
+	int horaE = Entrada.getHora();
+	int horaS = Salida.getHora();
+	int total = horaS - horaE;
+	setHoras(total);
 }
 
-int cVendedor::CalcularSalario() const
+void cVendedor::CalcularSalario()// const
 {
-	return 0;
+	int aux = 0;
+	aux = (SalarioxHora * getHoras());
+	setSalario(aux);
 }

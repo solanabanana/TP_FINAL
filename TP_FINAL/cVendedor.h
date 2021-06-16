@@ -8,7 +8,7 @@ public:
     cVendedor(string cuit);
     ~cVendedor() {};
 
-    int CalcularHorasTrabajadas() const override;
-    int CalcularSalario() const override;
+    void CalcularHorasTrabajadas();// const override;
+    void CalcularSalario();// const override;
 };
 
