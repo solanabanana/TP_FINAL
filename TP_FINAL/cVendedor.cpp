@@ -1,4 +1,5 @@
 #include "cVendedor.h"
+#include "cFecha.h"
 
 cVendedor::cVendedor(string cuit): cEmpleado(cuit)
 {
@@ -7,10 +8,31 @@ cVendedor::cVendedor(string cuit): cEmpleado(cuit)
 
 void cVendedor::CalcularHorasTrabajadas()// const
 {
-	int horaE = Entrada.getHora();
-	int horaS = Salida.getHora();
+	int horaE = 0;
+	int horaS = 0;
+	for (int i = 0; i < Entrada.getCA(); i++)
+	{
+		horaE = Entrada[i]->getHoras();
+		
+	}
+	for (int i = 0; i < Salida.getCA(); i++)
+	{
+		horaS = Salida[i]->getHoras();
+	}
+	int MinutoE = 0;
+	int MinutoS = 0;
+
+	for (int i = 0; i < Entrada.getCA(); i++)
+	{
+		MinutoE = Entrada[i]->getMinutos();
+	}
+	for (int i = 0; i < Salida.getCA(); i++)
+	{
+		MinutoS = Salida[i]->getMinutos();
+	}
+	int totalM = MinutoS - MinutoE;
 	int total = horaS - horaE;
-	setHoras(total);
+	setHoras(total, totalM);
 }
 
 void cVendedor::CalcularSalario()// const

@@ -19,6 +19,7 @@ public:
 	//contructor y destructor
 	cListaT(unsigned int TAM = NMAX);
 	~cListaT(void);
+	int getCA() { return CA; };
 	//metodos de la lista
 	void AgregarObjeto(T* objeto);
 	void Redimensionar();

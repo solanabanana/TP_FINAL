@@ -4,6 +4,7 @@ using namespace std;
 class cVendedor :
     public cEmpleado
 {
+    friend class cLocal;
 public:
     cVendedor(string cuit);
     ~cVendedor() {};

@@ -3,9 +3,10 @@
 
 using namespace std;
 
-cEmpleado::cEmpleado(string cuit, int salario):CUIT(cuit)
+cEmpleado::cEmpleado(string cuit, int salario): CUIT(cuit)
 {
 	this->SalarioxHora = salario;
-	Horas_trabajadas = 0;
+	this->Horas_trabajadas = 0;
+	this->Horas_trabajadas_Minutos = 0;
+	this->ocupado = false;
 }
-
