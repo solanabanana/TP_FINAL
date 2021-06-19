@@ -5,7 +5,7 @@ using namespace std;
 class cCerveceria
 {//La cervecería tiene un atributo que es la ganancia total que será la suma de la ganancia de todos los locales y ademas,
 	//una lista de estos mismos locales
-	float GananciaTotal;
+	float GananciaTotalDiaria;
 	cListaT<cLocal> Locales;
 
 public:
@@ -17,4 +17,3 @@ public:
 	void FinalizarJornada();//Se llama a FinalDeJornada(), CalcularGananciaTotal() y se llama a Historial()
 	void TICK();//Simulacion de llegada de clientes, compra, etc
 };
-
