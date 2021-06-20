@@ -1,10 +1,10 @@
 #include "cMozo.h"
 #include "cBar.h"
 #include "cFecha.h"
-
-cMozo::cMozo(string cuit): cEmpleado(cuit)
+using namespace std;
+cMozo::cMozo(string cuit): cEmpleado(cuit, 150)
 {
-	SalarioxHora = 150;
+	
 }
 
 void cMozo::CalcularHorasTrabajadas()// const
@@ -46,9 +46,9 @@ void cMozo::LimpiarMesa(int NumMesa, cBar* bar)
 {
 	for (int i = 0; i < bar->Mesas.getCA(); i++)
 	{
-		if (bar->Mesas[i].getNum() == NumMesa)
+		if (bar->Mesas[i]->getNumMesa()==NumMesa)
 		{
-			bar->Mesas[i]->setEstado(true);
+			bar->Mesas[i]->setLimpia(true);
 		}
 	}
 }

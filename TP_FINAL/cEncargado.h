@@ -16,5 +16,7 @@ public:
     void CalcularSalario();// const override;
     int CalcularCantBarriles(eCerveza tipo, cLocal* local);
     int CantCerveza(eCerveza tipo, cLocal* local);
+    void CalcularLitros(eCerveza tipo, cLocal* local);
+    
 };
 

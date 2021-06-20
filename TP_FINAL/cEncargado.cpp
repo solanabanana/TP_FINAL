@@ -1,6 +1,6 @@
 #include "cEncargado.h"
 using namespace std;
-//#include "cCerveza.h"
+
 #include "cLocal.h"
 #include "cPuntoDeVenta.h"
 #include "cBar.h"
@@ -9,14 +9,14 @@ using namespace std;
 
 #define NMIN 3
 
-cEncargado::cEncargado(string cuit): cEmpleado(cuit)
+cEncargado::cEncargado(string cuit): cEmpleado(cuit,300)
 {
-	SalarioxHora = 300;
+
 }
 
 
-void cEncargado::CalcularHorasTrabajadas()//const
-{//hacer con hora y min / hacer for que recorra la lista entrada[i].gethora
+void cEncargado::CalcularHorasTrabajadas()
+{
 	int horaE = 0;
 	int horaS = 0;
 	for (int i = 0; i < Entrada.getCA(); i++)
@@ -43,7 +43,7 @@ void cEncargado::CalcularHorasTrabajadas()//const
 	setHoras(total, totalM);
 }
 
-void cEncargado::CalcularSalario()// const
+void cEncargado::CalcularSalario()
 {
 	int aux = 0;
 	int auxM = 0;
@@ -77,20 +77,23 @@ int cEncargado::CalcularCantBarriles(eCerveza tipo, cLocal* local)
 
 
 
-	for (int i = 0; i < local->cervzas[i].getCA(); i++)
+	for (int i = 0; i < local->Cervezas.getCA();i++)
 	{
-		if (local->cervzas[i].getTipo() == tipo)
+		if (local->Cervezas[i]->getTipo()==tipo)
 		{
 
-			if ((local->cervzas[i].getCant() - NMIN)<0)
+			if ((local->Cervezas[i]->getCantBarriles()-NMIN)<0)
 			{
-				return (local->cervzas[i].getCant() - NMIN);
+				return (local->Cervezas[i]->getCantBarriles() - NMIN);
+			}
+			else {
+				return 0;//si no hay que reponer strock deveulve 0
 			}
 			 
 		}
 	}
 	
-
+	
 
 
 }
@@ -102,5 +105,21 @@ int cEncargado::CantCerveza(eCerveza tipo, cLocal* local)
 	{
 		return (aux * -2);
 	}
+}
+
+void cEncargado::CalcularLitros(eCerveza tipo, cLocal* local)
+{
+	int aux = CantCerveza(tipo, local);
+	float litros = (float)aux * 50;
+	for (int i = 0; i < local->Cervezas.getCA(); i++)
+	{
+		if (local->Cervezas[i]->getTipo() == tipo)
+		{
+
+			local->Cervezas[i]->setLitros(litros);
+
+		}
+	}
+
 }
 

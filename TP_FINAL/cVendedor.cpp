@@ -1,9 +1,9 @@
 #include "cVendedor.h"
 #include "cFecha.h"
 
-cVendedor::cVendedor(string cuit): cEmpleado(cuit)
+cVendedor::cVendedor(string cuit): cEmpleado(cuit,200)
 {
-	SalarioxHora = 200;
+	
 }
 
 void cVendedor::CalcularHorasTrabajadas()// const

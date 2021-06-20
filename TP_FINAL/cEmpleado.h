@@ -18,7 +18,7 @@ protected:
 
 public:
 	cEmpleado(string cuit, int salario);
-	~cEmpleado() {};
+	virtual ~cEmpleado() {};
 	virtual void CalcularHorasTrabajadas() const = 0;
 	virtual void CalcularSalario() const = 0;
 	string getClave()const { return CUIT; };
