@@ -17,25 +17,25 @@ void cBar::SimularCliente()
 	mediaspintas = 1 + rand() % 5;
 	//div sera la cantidad de clientes que van a pedir pintas y clientes - div pediran las medias pintas
 	float litros1 = 0, litros2 = 0, ganancia = 0;
-	litros1 = (float)div * pintas * 0.5;//Cada pinta es medio litro de cerveza
-	litros2 = (float)(clientes - div) * mediaspintas * 0.25;//Cada media pinta es 1/4 litro de cerveza
+	litros1 = (float)div * (float)pintas * 0.5;//Cada pinta es medio litro de cerveza
+	litros2 = (float)(clientes - div) * (float)mediaspintas * 0.25;//Cada media pinta es 1/4 litro de cerveza
 	//Hacemos que nuestros dos grupos de clientes ocupen dos mesas libres y ya ponemos que estan sucias
 	for (int i = 0; i < Mesas.CA; ++i)
 	{
 		if (Mesas[i]->getOcupado() == false)
 		{
-			Mesas[i]->setCantClientes(div);
+			Mesas[i]->setCantidadClientes(div);
 			Mesas[i]->setLimpia(false);
-			mesa1 = Mesas[i]->getNum();
+			mesa1 = Mesas[i]->getNumMesa();
 		}
 	}
 	for (int i = 0; i < Mesas.CA; ++i)
 	{
 		if (Mesas[i]->getOcupado() == false)
 		{
-			Mesas[i]->setCantClientes(clientes - div);
+			Mesas[i]->setCantidadClientes(clientes - div);
 			Mesas[i]->setLimpia(false);
-			mesa2 = Mesas[i]->getNum();
+			mesa2 = Mesas[i]->getNumMesa();
 		}
 	}
 	//Actualizamos la cantidad de litros de cada cerveza, dependiendo del tipo que se compro en cada caso y calculamos la ganancia total de la simulacion
@@ -43,20 +43,20 @@ void cBar::SimularCliente()
 	{
 		if (Cervezas[i]->getTipo() == tipo1)
 		{
-			if (Cervezas[i]->getLitros() >= litros1)
+			if (Cervezas[i]->getCantLitros() >= litros1)
 
 			{
-				Cervezas[i]->setLitros(Cervezas[i]->getLitros() - litros1);
-				ganancia += (float)div * pintas * Cervezas[i]->getPrecioPinta();
+				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros1);
+				ganancia += (float)div * pintas * Cervezas[i]->getPrecio_Pinta();
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
 		if (Cervezas[i]->getTipo() == tipo2)
 		{
-			if (Cervezas[i]->getLitros() >= litros2)
+			if (Cervezas[i]->getCantLitros() >= litros2)
 			{
-				Cervezas[i]->setLitros(Cervezas[i]->getLitros() - litros2);
-				ganancia += (float)(clientes - div) * mediaspintas * Cervezas[i]->getPrecioMedia();
+				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros2);
+				ganancia += (float)(clientes - div) * mediaspintas * Cervezas[i]->getprecio_medi_pinta();
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
@@ -73,7 +73,7 @@ void cBar::SimularCliente()
 			Empleados[j]->setOcupado(true);//Lo ponemos como ocupado
 			mozo->LimpiarMesa(mesa1, this);//El mozo limpia la mesa
 			Empleados[j]->setOcupado(false);
-			for (int k = j; k < Empleados.CA(); ++k)//No queremos que el mismo mozo limpie las dos mesas
+			for (int k = j; k < Empleados.CA; ++k)//No queremos que el mismo mozo limpie las dos mesas
 			{
 				mozo = dynamic_cast<cMozo*>(Empleados[k]);
 				if (mozo != NULL && Empleados[k]->getOcupado() == true)//Si el empleado es un mozo y esta libre
@@ -93,7 +93,7 @@ void cBar::SolicitarCerveza(eCerveza tipo, int cant)
 	{
 		if (Cervezas[i]->getTipo() == tipo)
 		{
-			Cervezas[i]->setCantBarriles(cant);
+			Cervezas[i]->setCant_Barriles(cant);
 			cout << "Se le informa a los mozos que se actualizo la cantidad de este tipo de cerveza" << endl;
 			GananciaTotal =- cant * 6000;//Para el bar, cada barril de cerveza le sale 6000 pesos, se lo restamos a la ganancia total
 			//No se lo restamos a ganancia diaria porque en ese atributo solo queremos saber cuanto se gano ese dia

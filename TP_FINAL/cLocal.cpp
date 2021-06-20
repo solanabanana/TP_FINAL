@@ -15,7 +15,7 @@ void cLocal::ActualizarCantBarriles(int cant, eCerveza tipo)
 {
 	for (int i = 0; i < Cervezas.getCA(); ++i)
 	{
-		if (Cervezas[i]->getTipo() == tipo) Cervezas[i]->setCantBarriles(Cervezas[i]->getCantBarriles() + cant);
+		if (Cervezas[i]->getTipo() == tipo) Cervezas[i]->setCant_Barriles(Cervezas[i]->getCantBarriles() + cant);
 	}
 }
 
@@ -50,13 +50,13 @@ void cLocal::setLitrosVendidos(float litros)
 void cLocal::FinDeJornada()
 {//Se retiran todos los empleados y se deja todo okay
 	//Se registra la salida de los empleados
-	cFecha* salida = new cFecha();
+	cFecha* salida;//VER ESTO
 	salida->setHoy();
 	//Si el encargado todavia esta en el local, tambien se registra su salida
-	if(Encargado != NULL) Encargado->Salida->AgregarObjeto(salida);
+	if(Encargado != NULL) Encargado->Salida.AgregarObjeto(salida);
 	for (int i = 0; i < Empleados.getCA(); ++i)
 	{
-		Empleados[i]->Salida->AgregarObjeto(salida);
+		Empleados[i]->Salida.AgregarObjeto(salida);
 	}
 	//Se retiran todos los empleados que aun esten en el local
 	Empleados.QuitarTodos();

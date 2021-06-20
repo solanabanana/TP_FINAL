@@ -37,3 +37,4 @@ public:
 	int getprecio_medi_pinta() { return Precio_media_Pinta; };
 	eCerveza getTipo() { return Tipo; };
 
+};

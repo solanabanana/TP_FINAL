@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,7 +147,9 @@
     <ClCompile Include="cListaT.cpp" />
     <ClCompile Include="cLocal.cpp" />
     <ClCompile Include="cMozo.cpp" />
-    <ClCompile Include="cPuntoDeVenta.cpp" />
+    <ClCompile Include="cPuntoDeVenta.cpp">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C4996</DisableSpecificWarnings>
+    </ClCompile>
     <ClCompile Include="cVendedor.cpp" />
     <ClCompile Include="Simulador.cpp" />
     <ClCompile Include="TP_FINAL.cpp" />

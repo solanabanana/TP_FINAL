@@ -42,20 +42,20 @@ void cPuntoDeVenta::SimularCliente()
 	{
 		if (Cervezas[i]->getTipo() == tipo1)
 		{
-			if (Cervezas[i]->getLitros() >= litros1)
+			if (Cervezas[i]->getCantLitros() >= litros1)
 
 			{
-				Cervezas[i]->setLitros(Cervezas[i]->getLitros() - litros1);
-				ganancia += (float)div * pintas * Cervezas[i]->getPrecioPinta();
+				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros1);
+				ganancia += (float)div * pintas * Cervezas[i]->getPrecio_Pinta();
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
 		if (Cervezas[i]->getTipo() == tipo2)
 		{
-			if (Cervezas[i]->getLitros() >= litros2)
+			if (Cervezas[i]->getCantLitros() >= litros2)
 			{
-				Cervezas[i]->setLitros(Cervezas[i]->getLitros() - litros2);
-				ganancia += (float)(clientes - div) * mediaspintas * Cervezas[i]->getPrecioMedia();
+				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros2);
+				ganancia += (float)(clientes - div) * mediaspintas * Cervezas[i]->getprecio_medi_pinta();
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
@@ -70,7 +70,7 @@ void cPuntoDeVenta::SolicitarCerveza(eCerveza tipo, int cant)
 	{
 		if (Cervezas[i]->getTipo() == tipo)
 		{
-			Cervezas[i]->setCantBarriles(cant);
+			Cervezas[i]->setCant_Barriles(cant);
 			cout << "Se le informa a la empresa que se actualizo la cantidad de este tipo de cerveza en un punto de venta" << endl;
 			GananciaTotal =- cant * 3000;//Los barriles les sale la mitad a los puntos de venta ya que usualmente compran mas cantidad
 		}
