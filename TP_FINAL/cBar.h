@@ -7,12 +7,14 @@ class cBar :
     public cLocal
 {
     cListaT<cMesa> Mesas;
+    friend class cMozo;
 
 public:
-    cBar(cEmpleado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion, cListaT<cMesa> mesas);
+    cBar(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion, cListaT<cMesa> mesas);
     ~cBar() {};
 
-    void SimularCliente() const override;
-    void SolicitarCerveza() const override;
+    void SimularCliente();
+    void SolicitarCerveza(eCerveza tipo, int cant);
+    void ChequearStock();
 };
 

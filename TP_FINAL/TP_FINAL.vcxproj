@@ -148,6 +148,7 @@
     <ClCompile Include="cMozo.cpp" />
     <ClCompile Include="cPuntoDeVenta.cpp" />
     <ClCompile Include="cVendedor.cpp" />
+    <ClCompile Include="Simulador.cpp" />
     <ClCompile Include="TP_FINAL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="cMozo.h" />
     <ClInclude Include="cPuntoDeVenta.h" />
     <ClInclude Include="cVendedor.h" />
+    <ClInclude Include="Simulador.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,10 +6,11 @@ class cPuntoDeVenta :
 {
 public:
 
-    cPuntoDeVenta(cEmpleado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion);
+    cPuntoDeVenta(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion);
     ~cPuntoDeVenta() {};
 
-    void SimularCliente() const override;
-    void SolicitarCerveza() const override;
+    void SimularCliente();
+    void SolicitarCerveza(eCerveza tipo, int cant);
+    void ChequearStock();
 };
 
