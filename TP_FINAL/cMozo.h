@@ -6,12 +6,13 @@ class cMozo :
     public cEmpleado
 {
     friend class cLocal;
-public:
+public://constructor  y destructor
     cMozo(string cuit);
     ~cMozo() {};
-
-    void CalcularHorasTrabajadas();// const override;
-    void CalcularSalario();// const override;
+    //metodos heredados
+    void CalcularHorasTrabajadas();
+    void CalcularSalario();
+    //metodo propio de la clase
     void LimpiarMesa(int NumMesa, cBar* bar);
 };
 

@@ -7,8 +7,8 @@ class cEmpleado
 {
 	friend class cLocal;
 protected:
+	//declaramos los atributos
 	const string CUIT;
-	//Consideramos que quizás sea mejor tener un doble puntero para poder acceder a las entradas y salidas de todos los días
 	cListaT<cFecha> Entrada;
 	cListaT<cFecha> Salida;
 	int SalarioxHora;
@@ -17,10 +17,13 @@ protected:
 	bool ocupado;
 
 public:
+	//contructor y destructor virtual 
 	cEmpleado(string cuit, int salario);
 	virtual ~cEmpleado() {};
+	//metodos virtual para clases hijas
 	virtual void CalcularHorasTrabajadas() = 0;
 	virtual void CalcularSalario()  = 0;
+	//getters y setters
 	string getClave()const { return CUIT; };
 	int getSalario() { return SalarioxHora; };
 	void setSalario(int salario) { SalarioxHora = salario; };

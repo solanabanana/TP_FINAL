@@ -8,12 +8,13 @@ class cEncargado :
     public cEmpleado
 {
     friend class cLocal;
-public:
+public://constructor y destructor
     cEncargado(string cuit);
     ~cEncargado() {};
-
-    void CalcularHorasTrabajadas();// const override;
-    void CalcularSalario();// const override;
+    //metodos heredador
+    void CalcularHorasTrabajadas();
+    void CalcularSalario();
+    //metodos propios de la clase
     int CalcularCantBarriles(eCerveza tipo, cLocal* local);
     int CantCerveza(eCerveza tipo, cLocal* local);
     void CalcularLitros(eCerveza tipo, cLocal* local);

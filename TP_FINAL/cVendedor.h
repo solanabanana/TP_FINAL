@@ -5,11 +5,11 @@ class cVendedor :
     public cEmpleado
 {
     friend class cLocal;
-public:
+public://constructor y destructor
     cVendedor(string cuit);
     ~cVendedor() {};
-
-    void CalcularHorasTrabajadas();// const override;
-    void CalcularSalario();// const override;
+    //metodos heredados
+    void CalcularHorasTrabajadas();
+    void CalcularSalario();
 };
 
