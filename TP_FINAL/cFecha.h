@@ -9,13 +9,13 @@ class cFecha
 	int Mes;
 	int Anio;
 public:
-	cFecha(int Min, int Hor, int Dia, int Mes, int Anio)
+	cFecha(int Min, int Hor, int dia, int mes, int anio)
 	{
 		Minutos = Min;
 		Horas = Hor;
-		Dia = Dia;
-		Mes = Mes;
-		Anio = Anio;
+		Dia = dia;
+		Mes = mes;
+		Anio = anio;
 	};             //Hay que ver si necesitamos definir las fechas cuadno las creamos o si tenemos que crearlas sin nada
 	~cFecha() {};
 

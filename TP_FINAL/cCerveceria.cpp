@@ -11,8 +11,8 @@ cCerveceria::~cCerveceria()
 
 float cCerveceria::CalcularGananciaTotal()
 {
-
-	for (unsigned int i = 0; i < Locales->getCA(); i++)
+	
+	for (unsigned int i = 0; i < Locales.getCA(); i++)
 	{
 		GananciaTotalDiaria += Locales[i]->getGananciaDiaria();
 	}
@@ -22,23 +22,23 @@ float cCerveceria::CalcularGananciaTotal()
 
 void cCerveceria::Historial()
 {
-	for (int i = 0; i < Locales->getCA(); i++)
+	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		cout << Locales[i];
+		cout << Locales[i]<<endl;
 	}
 }
 
 void cCerveceria::TICK()
 {
-	for (int i = 0; i < Locales->getCA(); i++)
+	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		Locales[i]->SimularCliente();
+		Locales[i]->SimularClientes;
 	}
 }
 
 void cCerveceria::FinalizarJornada() {
 
-	for (int i = 0; i < Locales->getCA(); i++)
+	for (int i = 0; i < Locales.getCA(); i++)
 	{
 		Locales[i]->FinDeJornada();
 		GananciaTotalDiaria = 0;

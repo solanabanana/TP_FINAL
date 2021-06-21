@@ -32,9 +32,9 @@ public:
 	void setLitros(float Litros) { CantLitros = Litros; }
 	int getCantBarriles() { return CantBarriles; };
 	int getCantLitros() { return CantLitros; };
-	int getPrecioxLitro() { return PrecioxLitro; };
-	int getPrecio_Pinta() { return Precio_Pinta; };
-	int getprecio_medi_pinta() { return Precio_media_Pinta; };
+	float getPrecioxLitro() { return PrecioxLitro; };
+	float getPrecio_Pinta() { return Precio_Pinta; };
+	float getprecio_medi_pinta() { return Precio_media_Pinta; };
 	eCerveza getTipo() { return Tipo; };
 
 };
