@@ -20,18 +20,18 @@ void cBar::SimularCliente()
 	litros1 = (float)div * (float)pintas * 0.5;//Cada pinta es medio litro de cerveza
 	litros2 = (float)(clientes - div) * (float)mediaspintas * 0.25;//Cada media pinta es 1/4 litro de cerveza
 	//Hacemos que nuestros dos grupos de clientes ocupen dos mesas libres y ya ponemos que estan sucias
-	for (int i = 0; i < Mesas.CA; ++i)
+	for (unsigned int i = 0; i < Mesas.CA; ++i)
 	{
-		if (Mesas[i]->getOcupado() == false)
+		if (Mesas[i]->getOcupada() == false)
 		{
 			Mesas[i]->setCantidadClientes(div);
 			Mesas[i]->setLimpia(false);
 			mesa1 = Mesas[i]->getNumMesa();
 		}
 	}
-	for (int i = 0; i < Mesas.CA; ++i)
+	for (unsigned int i = 0; i < Mesas.CA; ++i)
 	{
-		if (Mesas[i]->getOcupado() == false)
+		if (Mesas[i]->getOcupada() == false)
 		{
 			Mesas[i]->setCantidadClientes(clientes - div);
 			Mesas[i]->setLimpia(false);
@@ -39,7 +39,7 @@ void cBar::SimularCliente()
 		}
 	}
 	//Actualizamos la cantidad de litros de cada cerveza, dependiendo del tipo que se compro en cada caso y calculamos la ganancia total de la simulacion
-	for (int i = 0; i < Cervezas.CA; ++i)
+	for (unsigned int i = 0; i < Cervezas.CA; ++i)
 	{
 		if (Cervezas[i]->getTipo() == tipo1)
 		{
@@ -65,7 +65,7 @@ void cBar::SimularCliente()
 	setLitrosVendidos(LitrosVendidosDiarios + litros1 + litros2);//Actualizamos la cantidad de litros que se vendieron en el local
 	//Limpiamos las mesas
 	cMozo* mozo;
-	for (int j = 0; j < Empleados.CA; ++j)//recorremos la lista de empleados
+	for (unsigned int j = 0; j < Empleados.CA; ++j)//recorremos la lista de empleados
 	{
 		mozo = dynamic_cast<cMozo*>(Empleados[j]);//a cada empleado hacemos el dynamic cast cMozo
 		if (mozo != NULL && Empleados[j]->getOcupado() == true)//Si el empleado es un mozo y esta libre
@@ -89,7 +89,7 @@ void cBar::SimularCliente()
 
 void cBar::SolicitarCerveza(eCerveza tipo, int cant) 
 {
-	for (int i = 0; i < Cervezas.CA; ++i)
+	for (unsigned int i = 0; i < Cervezas.CA; ++i)
 	{
 		if (Cervezas[i]->getTipo() == tipo)
 		{

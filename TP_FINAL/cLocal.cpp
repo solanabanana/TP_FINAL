@@ -1,5 +1,5 @@
 #include "cLocal.h"
-
+#include "cFecha.h"
 cLocal::cLocal(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion): Nombre(nombre), Numero(numero), Ubicacion(ubicacion)
 {
 	Empleados = empleados;
@@ -50,7 +50,7 @@ void cLocal::setLitrosVendidos(float litros)
 void cLocal::FinDeJornada()
 {//Se retiran todos los empleados y se deja todo okay
 	//Se registra la salida de los empleados
-	cFecha* salida;//VER ESTO
+	cFecha* salida = new cFecha(0, 0, 0, 0, 0);
 	salida->setHoy();
 	//Si el encargado todavia esta en el local, tambien se registra su salida
 	if(Encargado != NULL) Encargado->Salida.AgregarObjeto(salida);

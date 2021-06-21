@@ -11,25 +11,25 @@ Simulador::Simulador(cListaT<cCerveza>* cb, cListaT<cCerveza>* cp, cListaT<cEmpl
 void Simulador::AgregarCervezas()
 {	//Nos creamos cervezas para el bar y el punto de venta y las agregamos a sus listas
 	cCerveza* nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::RUBIA, 5);
+	nueva_cerveza = new cCerveza(eCerveza::RUBIA, 5, 500, 200, 100);
 	*cervezas_bar + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::RUBIA, 10);
+	nueva_cerveza = new cCerveza(eCerveza::RUBIA, 10, 450, 0, 0);
 	*cervezas_puntoventa + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::HONEY, 5);
+	nueva_cerveza = new cCerveza(eCerveza::HONEY, 5, 550, 250, 150);
 	*cervezas_bar + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::HONEY, 7);
+	nueva_cerveza = new cCerveza(eCerveza::HONEY, 7, 450, 0, 0);
 	*cervezas_puntoventa + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::ROJA, 7);
+	nueva_cerveza = new cCerveza(eCerveza::ROJA, 7, 400, 150, 100);
 	*cervezas_bar + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::ROJA, 9);
+	nueva_cerveza = new cCerveza(eCerveza::ROJA, 9, 350, 0, 0);
 	*cervezas_puntoventa + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::NEGRA, 4);
+	nueva_cerveza = new cCerveza(eCerveza::NEGRA, 4, 400, 200, 100);
 	*cervezas_bar + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::NEGRA, 7);
+	nueva_cerveza = new cCerveza(eCerveza::NEGRA, 7, 350, 0, 0);
 	*cervezas_puntoventa + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::IPA, 9);
+	nueva_cerveza = new cCerveza(eCerveza::IPA, 9, 500, 250, 125);
 	*cervezas_bar + nueva_cerveza;
-	nueva_cerveza = new cCerveza(eCerveza::IPA, 14);
+	nueva_cerveza = new cCerveza(eCerveza::IPA, 14,450, 0, 0);
 	*cervezas_puntoventa + nueva_cerveza;
 	//nueva_cerveza = NULL; ??
 	//delete nueva_cerveza ??

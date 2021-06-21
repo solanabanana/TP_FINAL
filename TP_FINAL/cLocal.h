@@ -1,8 +1,5 @@
 #pragma once
-#include "cEmpleado.h"
-#include "cCerveza.h"
 #include "cEncargado.h"
-#include "cListaT.h"
 #include <sstream>
 #include <time.h>
 using namespace std;

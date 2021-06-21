@@ -19,7 +19,11 @@ void cPuntoDeVenta::ChequearStock()
 	ver = Encargado->CalcularCantBarriles(eCerveza::RUBIA, this);
 	if (ver == true) SolicitarCerveza(eCerveza::RUBIA, Encargado->CantCerveza(eCerveza::RUBIA, aux));
 	cout << "Se debe hacer un conteo de la cantidad de barriles para verificar que se haya stockeado correctamente, el encargado registrara los litros de cerveza que hay disponibles." << endl;
-	Encargado->ActualizarCantLitros();
+	Encargado->CalcularLitros(eCerveza::HONEY, aux);
+	Encargado->CalcularLitros(eCerveza::IPA, aux);
+	Encargado->CalcularLitros(eCerveza::NEGRA, aux);
+	Encargado->CalcularLitros(eCerveza::ROJA, aux);
+	Encargado->CalcularLitros(eCerveza::RUBIA, aux);
 }
 
 void cPuntoDeVenta::SimularCliente()
