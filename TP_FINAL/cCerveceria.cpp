@@ -16,7 +16,7 @@ float cCerveceria::CalcularGananciaTotal(){
 
 	for (unsigned int i = 0; i < Locales.getCA(); i++)
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
 		if (aux != NULL)
 		{
 			GananciaDiaria += aux->getGananciaDiaria();
@@ -24,7 +24,7 @@ float cCerveceria::CalcularGananciaTotal(){
 		}
 		else
 		{
-			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
 
 			GananciaDiaria += aux->getGananciaDiaria();
 			GananciaTotal += GananciaDiaria;
@@ -47,7 +47,7 @@ void cCerveceria::TICK()
 {
 	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
 		if (aux != NULL)
 		{
 			try {
@@ -61,7 +61,7 @@ void cCerveceria::TICK()
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
 			try {
 				aux->SimularCliente();
 			}
@@ -78,7 +78,7 @@ void cCerveceria::FinalizarJornada() {
 
 	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
 		if (aux != NULL)
 		{
 			aux->FinDeJornada();
@@ -87,7 +87,7 @@ void cCerveceria::FinalizarJornada() {
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
 			aux->FinDeJornada();
 			GananciaTotal = 0;
 			Historial();
