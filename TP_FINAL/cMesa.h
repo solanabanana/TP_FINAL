@@ -11,7 +11,7 @@ public:
 	cMesa(int num_mesa) : NumMesa(num_mesa) {//Comienza la jornada, la mesa está limpia y sin clientes
 		Limpia = true;
 		CantClientes = 0;
-		bool = false;
+		Ocupada = false;
 	};
 	~cMesa() {};
 

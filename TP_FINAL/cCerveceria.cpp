@@ -1,23 +1,38 @@
 #include "cCerveceria.h"
-
+#include "cBar.h"
+#include"cPuntoDeVenta.h"
 cCerveceria::cCerveceria(cListaT<cLocal> locales)
 {
-	GananciaTotalDiaria = 0;
+	GananciaDiaria = 0;
+	GananciaTotal = 0;
 }
 
 cCerveceria::~cCerveceria()
 {
 }
 
-float cCerveceria::CalcularGananciaTotal()
-{
-	
+float cCerveceria::CalcularGananciaTotal(){
+
+
 	for (unsigned int i = 0; i < Locales.getCA(); i++)
 	{
-		GananciaTotalDiaria += Locales[i]->getGananciaDiaria();
+		cBar* aux = dynamic_cast<cBar*>(Locales);
+		if (aux != NULL)
+		{
+			GananciaDiaria += aux->getGananciaDiaria();
+			GananciaTotal += GananciaDiaria;
+		}
+		else
+		{
+			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+
+			GananciaDiaria += aux->getGananciaDiaria();
+			GananciaTotal += GananciaDiaria;
+		}
 	}
 
-	return GananciaTotalDiaria;
+	
+	return GananciaTotal;
 }
 
 void cCerveceria::Historial()
@@ -32,7 +47,30 @@ void cCerveceria::TICK()
 {
 	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		Locales[i]->SimularClientes;
+		cBar* aux = dynamic_cast<cBar*>(Locales);
+		if (aux != NULL)
+		{
+			try {
+				aux->SimularCliente();
+			}
+			catch (exception* ex)
+			{
+				cout << ex->what() << endl;
+				delete ex;
+			}
+		}
+		else
+		{
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+			try {
+				aux->SimularCliente();
+			}
+			catch(exception*ex){
+
+				cout << ex->what() << endl;
+				delete ex;
+			}
+		}
 	}
 }
 
@@ -40,8 +78,19 @@ void cCerveceria::FinalizarJornada() {
 
 	for (int i = 0; i < Locales.getCA(); i++)
 	{
-		Locales[i]->FinDeJornada();
-		GananciaTotalDiaria = 0;
-		Historial();
+		cBar* aux = dynamic_cast<cBar*>(Locales);
+		if (aux != NULL)
+		{
+			aux->FinDeJornada();
+			GananciaTotal = 0;
+			Historial();
+		}
+		else
+		{
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales);
+			aux->FinDeJornada();
+			GananciaTotal = 0;
+			Historial();
+		}
 	}
 }
