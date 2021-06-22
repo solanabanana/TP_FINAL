@@ -5,7 +5,8 @@ using namespace std;
 class cCerveceria
 {//La cervecería tiene un atributo que es la ganancia total que será la suma de la ganancia de todos los locales y ademas,
 	//una lista de estos mismos locales
-	float GananciaTotalDiaria;
+	float GananciaTotal;
+	float GananciaDiaria;
 	cListaT<cLocal> Locales;
 
 public:
