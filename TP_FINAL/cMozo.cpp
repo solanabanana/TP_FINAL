@@ -1,5 +1,6 @@
 #include "cMozo.h"
-
+#include "cBar.h"
+#include "cFecha.h"
 using namespace std;
 cMozo::cMozo(string cuit): cEmpleado(cuit, 150)// pasamos los valores necesarios para el contructor padre
 {

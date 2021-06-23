@@ -1,7 +1,10 @@
 #include "cEncargado.h"
 using namespace std;
 
-
+#include "cLocal.h"
+#include "cPuntoDeVenta.h"
+#include "cBar.h"
+#include "cFecha.h"
 
 
 #define NMIN 3//nos creamos un nmin para la simulacion
