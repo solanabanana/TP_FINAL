@@ -13,7 +13,7 @@ private:
 	cListaT<cEmpleado>* empleados_bar;
 	cListaT<cEmpleado>* empleados_puntoventa;
 public:
-	Simulador(cListaT<cCerveza>* cb, cListaT<cCerveza>* cp, cListaT<cEmpleado>* eb, cListaT<cEmpleado>* ep);
+	Simulador(cListaT<cCerveza>& cb, cListaT<cCerveza>& cp, cListaT<cEmpleado>& eb, cListaT<cEmpleado>& ep);
 	~Simulador() {};
 	void AgregarCervezas();
 	void AgregarEmpleados();
