@@ -1,5 +1,5 @@
 #include "cVendedor.h"
-#include "cFecha.h"
+
 
 cVendedor::cVendedor(string cuit): cEmpleado(cuit,200)// pasamos los valores necesarios para el contructor padre
 {

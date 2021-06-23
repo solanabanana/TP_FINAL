@@ -1,5 +1,10 @@
 #pragma once
 #include "cListaT.h"
+#include "cLocal.h"
+#include "cPuntoDeVenta.h"
+#include "cBar.h"
+#include "cFecha.h"
+#include "cCerveza.h"
 class cFecha;
 
 using namespace std;

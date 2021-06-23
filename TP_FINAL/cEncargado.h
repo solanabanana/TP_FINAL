@@ -1,6 +1,6 @@
 #pragma once
 #include "cEmpleado.h"
-#include "cCerveza.h"
+
 //class cCerveza;
 class cLocal;
 using namespace std;
