@@ -1,11 +1,11 @@
 #include "Simulador.h"
 
-Simulador::Simulador(cListaT<cCerveza>* cb, cListaT<cCerveza>* cp, cListaT<cEmpleado>* eb, cListaT<cEmpleado>* ep)
+Simulador::Simulador(cListaT<cCerveza>& cb, cListaT<cCerveza>& cp, cListaT<cEmpleado>& eb, cListaT<cEmpleado>& ep)
 {
-	cervezas_bar = cb;
-	cervezas_puntoventa = cp;
-	empleados_bar = eb;
-	empleados_puntoventa = ep;
+	cervezas_bar = new cListaT<cCerveza>(cb);
+	cervezas_puntoventa = new cListaT<cCerveza>(cp);
+	empleados_bar = new cListaT<cEmpleado>(eb);
+	empleados_puntoventa = new cListaT<cEmpleado>(ep);;
 }
 
 void Simulador::AgregarCervezas()
