@@ -32,6 +32,7 @@ int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAI
 	//Nos creamos la cerveceria
 	cCerveceria* Pride = new cCerveceria(*locales);
 	//Simulacion de llegada de clientes y actualizacion de datos
+	//Fijarse en BuscarObjeto, esta tirando error.
 	Pride->TICK();
 	//Renuncia un mozo del bar
 	*empleados_bar - empleados_bar[0]["865"];
