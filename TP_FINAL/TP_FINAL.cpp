@@ -11,7 +11,7 @@ int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAI
 	cListaT<cEmpleado> *empleados_bar = new cListaT<cEmpleado>();
 	cListaT<cEmpleado> *empleados_puntoventa = new cListaT<cEmpleado>();
 	//Creamos un simulador para llenar la lista de empleados y cervezas de ambos locales
-	Simulador* simulador = new Simulador(cervezas_bar, cervezas_puntoventa, empleados_bar, empleados_puntoventa);
+	Simulador* simulador = new Simulador(*cervezas_bar, *cervezas_puntoventa, *empleados_bar, *empleados_puntoventa);
 	simulador->AgregarCervezas();
 	simulador->AgregarEmpleados();
 	//Creamos la lista de mesas para el bar con tres mesas
