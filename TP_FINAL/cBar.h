@@ -6,13 +6,14 @@
 class cBar :
     public cLocal
 {
-    cListaT<cMesa> Mesas;
-    friend class cMozo;
+    cListaT<cMesa> Mesas;//lista de mesas
+    friend class cMozo;//fiend de clase mozo
 
 public:
+    //constructor y destructor
     cBar(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion, cListaT<cMesa> mesas);
     ~cBar() {};
-
+    //metodos heredados
     void SimularCliente();
     void SolicitarCerveza(eCerveza tipo, int cant);
     void ChequearStock();

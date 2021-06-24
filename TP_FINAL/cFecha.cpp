@@ -1,4 +1,5 @@
 #include "cFecha.h"
+//contructor por parametros
 cFecha::cFecha(int Min, int Hor, int dia, int mes, int anio)
 {
 	Minutos = Min;
@@ -7,6 +8,7 @@ cFecha::cFecha(int Min, int Hor, int dia, int mes, int anio)
 	Mes = mes;
 	Anio = anio;
 }
+//implemento los setters
 void cFecha::setActualizar(int dia, int mes, int anio)
 {
 	Dia = dia;
@@ -19,6 +21,7 @@ void cFecha::setHoy()
 	tm* now = localtime(&t);
 	setActualizar(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
 }
+//implementacion del to string e imprimir
 inline string cFecha::to_stringFecha()
 {
 	string s = to_string(Dia) + "/" + to_string(Mes) + "/" + to_string(Anio);

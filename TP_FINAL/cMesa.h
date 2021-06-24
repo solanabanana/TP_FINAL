@@ -15,7 +15,7 @@ public:
 	};
 	~cMesa() {};
 
-
+	//getters y setters
 	void setLimpia(bool estado) { Limpia = estado; };
 	bool getLimpia() { return Limpia; };
 	void setCantidadClientes(int clientes) { CantClientes = clientes; };

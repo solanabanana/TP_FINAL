@@ -1,6 +1,7 @@
 #include "cCerveceria.h"
 #include "cBar.h"
 #include"cPuntoDeVenta.h"
+//constructor y destructor
 cCerveceria::cCerveceria(cListaT<cLocal> locales)
 {
 	GananciaDiaria = 0;
@@ -14,19 +15,19 @@ cCerveceria::~cCerveceria()
 float cCerveceria::CalcularGananciaTotal(){
 
 
-	for (unsigned int i = 0; i < Locales.getCA(); i++)
+	for (unsigned int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos dynamic cast para ver si es bar o no
 		if (aux != NULL)
 		{
-			GananciaDiaria += aux->getGananciaDiaria();
+			GananciaDiaria += aux->getGananciaDiaria();//si es un bar llamamos a su getter y actualizamos el atributo
 			GananciaTotal += GananciaDiaria;
 		}
-		else
+		else//si no es bar es punto de venta
 		{
-			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
+			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos dynamic cast
 
-			GananciaDiaria += aux->getGananciaDiaria();
+			GananciaDiaria += aux->getGananciaDiaria();// llamamos a su getter y actualizamos el atributo
 			GananciaTotal += GananciaDiaria;
 		}
 	}
@@ -36,7 +37,7 @@ float cCerveceria::CalcularGananciaTotal(){
 }
 
 void cCerveceria::Historial()
-{
+{//imrimirmos la lista de locales
 	for (int i = 0; i < Locales.getCA(); i++)
 	{
 		cout << Locales[i]<<endl;
@@ -45,13 +46,13 @@ void cCerveceria::Historial()
 
 void cCerveceria::TICK()
 {
-	for (int i = 0; i < Locales.getCA(); i++)
+	for (int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos dynamic cast
 		if (aux != NULL)
 		{
 			try {
-				aux->SimularCliente();
+				aux->SimularCliente();//llamamos a simular cliente
 			}
 			catch (exception* ex)
 			{
@@ -61,9 +62,9 @@ void cCerveceria::TICK()
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos dynamic cast
 			try {
-				aux->SimularCliente();
+				aux->SimularCliente();//llamamos a simular cliente
 			}
 			catch(exception*ex){
 
@@ -76,21 +77,21 @@ void cCerveceria::TICK()
 
 void cCerveceria::FinalizarJornada() {
 
-	for (int i = 0; i < Locales.getCA(); i++)
+	for (int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);
+		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos sya=namic cast
 		if (aux != NULL)
 		{
-			aux->FinDeJornada();
-			GananciaTotal = 0;
-			Historial();
+			aux->FinDeJornada();//llamamos a finalizar jornada
+			GananciaTotal = 0;//setteamos el atributo
+			Historial();//imprimimos
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);
-			aux->FinDeJornada();
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos synamic cast
+			aux->FinDeJornada();//llamamos a finalizar jornada
 			GananciaTotal = 0;
-			Historial();
+			Historial();//imrimimos 
 		}
 	}
 }

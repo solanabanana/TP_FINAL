@@ -8,7 +8,7 @@ typedef enum {//enum de los tipos de cervezas que vende nuestra cervecería
 	HONEY
 } eCerveza;
 class cCerveza
-{
+{//creo los atributos
 	int CantBarriles;  //Barriles de 50L cada uno
 	float PrecioxLitro;
 	float Precio_Pinta;
@@ -16,7 +16,7 @@ class cCerveza
 	int CantLitros;
 	eCerveza Tipo;
 
-public:
+public://constructor y destructor
 	cCerveza(eCerveza tipo, int cant_barriles, float PrecioxLitro, float Precio_Pinta, float Precio_media_Pinta) : Tipo(tipo)
 	{
 		CantBarriles = cant_barriles;
@@ -26,10 +26,11 @@ public:
 		CantLitros = 0;
 	};
 	~cCerveza() {};
-
-	void setCant_Barriles(int num) { CantBarriles = num; }
+	//metodo
 	void CalcLitros() { CantLitros = CantBarriles * 50; }
+	//setters y getters
 	void setLitros(float Litros) { CantLitros = Litros; }
+	void setCant_Barriles(int num) { CantBarriles = num; }
 	int getCantBarriles() { return CantBarriles; };
 	int getCantLitros() { return CantLitros; };
 	float getPrecioxLitro() { return PrecioxLitro; };

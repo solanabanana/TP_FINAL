@@ -1,5 +1,6 @@
 #include "cLocal.h"
 #include "cFecha.h"
+//construcro por parametros
 cLocal::cLocal(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion): Nombre(nombre), Numero(numero), Ubicacion(ubicacion)
 {
 	Empleados = empleados;
@@ -13,9 +14,9 @@ cLocal::cLocal(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmple
 
 void cLocal::ActualizarCantBarriles(int cant, eCerveza tipo)
 {
-	for (int i = 0; i < Cervezas.getCA(); ++i)
+	for (int i = 0; i < Cervezas.getCA(); ++i)//recorro la lista de cervezas
 	{
-		if (Cervezas[i]->getTipo() == tipo) Cervezas[i]->setCant_Barriles(Cervezas[i]->getCantBarriles() + cant);
+		if (Cervezas[i]->getTipo() == tipo) Cervezas[i]->setCant_Barriles(Cervezas[i]->getCantBarriles() + cant);//si son del tipo que quiero actualizar llamo al setter
 	}
 }
 
@@ -64,7 +65,7 @@ void cLocal::FinDeJornada()
 	GananciaDiaria = 0;
 	LitrosVendidosDiarios = 0;
 }
-
+//sobrecarga del operador
 ostream& operator<<(ostream& os, const cLocal* local)
 {
 	os << "Nombre: " << local->Nombre << endl;

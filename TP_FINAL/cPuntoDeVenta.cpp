@@ -5,7 +5,7 @@ cPuntoDeVenta::cPuntoDeVenta(cEncargado* encargado, cListaT<cCerveza> cervezas, 
 }
 
 void cPuntoDeVenta::ChequearStock()
-{
+{//cheuqeo stock de cada tipo de cerveza y luego cuento la cantidad de litros por cerveza para verificar
 	bool ver;
 	cLocal* aux = dynamic_cast<cLocal*>(this);
 	ver = Encargado->CalcularCantBarriles(eCerveza::HONEY, aux);

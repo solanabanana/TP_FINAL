@@ -1,5 +1,5 @@
 #include "Simulador.h"
-
+//constructor
 Simulador::Simulador(cListaT<cCerveza>& cb, cListaT<cCerveza>& cp, cListaT<cEmpleado>& eb, cListaT<cEmpleado>& ep)
 {
 	cervezas_bar = new cListaT<cCerveza>(cb);

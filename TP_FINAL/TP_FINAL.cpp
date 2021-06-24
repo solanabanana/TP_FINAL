@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Simulador.h"
-int main()//HACER FUNCION SIMULACION QUE HAGA TODO ESTO Y LLAMARLA ACA EN EL MAIN
+int main()
 {//Simulacion de una jornada laboral
 	cListaT<cCerveza>* cervezas_bar = new cListaT<cCerveza>();
 	cListaT<cCerveza>* cervezas_puntoventa = new cListaT<cCerveza>();
