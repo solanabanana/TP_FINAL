@@ -1,5 +1,6 @@
 #pragma once
 #include "cListaT.h"
+
 class cLocal;
 using namespace std;
 class cCerveceria

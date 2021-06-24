@@ -7,7 +7,7 @@ class cBar :
     public cLocal
 {
     cListaT<cMesa> Mesas;//lista de mesas
-    friend class cMozo;//fiend de clase mozo
+    friend class cMozo;//friend de clase mozo
 
 public:
     //constructor y destructor
