@@ -1,5 +1,6 @@
 #pragma once
 #include "cListaT.h"
+#include <sstream>
 class cFecha;
 
 using namespace std;
@@ -9,8 +10,8 @@ class cEmpleado
 protected:
 	//declaramos los atributos
 	const string CUIT;
-	cListaT<cFecha> Entrada;
-	cListaT<cFecha> Salida;
+	cListaT<cFecha>* Entrada;
+	cListaT<cFecha>* Salida;
 	int SalarioxHora;
 	int Horas_trabajadas;
 	int Horas_trabajadas_Minutos;
@@ -28,10 +29,13 @@ public:
 	int getSalario() { return SalarioxHora; };
 	void setSalario(int salario) { SalarioxHora = salario; };
 	void setHoras(int hora, int min) { Horas_trabajadas = hora; Horas_trabajadas_Minutos = min; };
+	void setEntrada();
 	int getHoras() { return Horas_trabajadas; };
 	int getMin() { return Horas_trabajadas_Minutos; };
 	bool getOcupado() { return ocupado; };
 	void setOcupado(bool estado) { ocupado = estado; };
+	string to_stringEmpleado();
+	void ImprimirEmpleado();
 	
 
 };

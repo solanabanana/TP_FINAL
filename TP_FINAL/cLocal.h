@@ -1,5 +1,7 @@
 #pragma once
 #include "cEncargado.h"
+#include "cMozo.h"
+#include "cVendedor.h"
 #include <sstream>
 #include <time.h>
 using namespace std;
@@ -27,14 +29,18 @@ public:
 	void ActualizarCantBarriles(int cant, eCerveza tipo);
 	float getGananciaDiaria();
 	void setGanancia(float money);
+	void setGananciaDiaria(float money);
 	void LiberarEncargado(); //Probarla, si se pierden los datos del encargado, intentar de otra forma
 	float getLitrosVendidosDiarios();
 	void setLitrosVendidos(float litros);
+	void setLitrosVendidosDiarios(float litros);
+	eCerveza ConvertirTipoCerveza(int tipo);
 	void FinDeJornada();//Se retiran todos los empleados y se deja todo okay
 	//metodos virtual a heredar 
 	virtual void SimularCliente()  = 0;
 	virtual void SolicitarCerveza(eCerveza tipo, int cant)  = 0;
 	virtual void ChequearStock() = 0;
+	void ImprimirEmpleados();
 	//sobrecarga del operador
 	friend ostream& operator<<(ostream& os, const cLocal* local);
 };

@@ -30,36 +30,40 @@ void cPuntoDeVenta::SimularCliente()
 {
 	//Aca simulamos que llegan de 1 a 10 clientes y que algunos pediran de 1 a 5 pintas y los demas de 1 a 4 medias pintas
 	srand(time(NULL));
-	int clientes = 0, pintas = 0, mediaspintas = 0, div = 0, tipo1 = 0, tipo2 = 0, mesa1 = 0, mesa2 = 0;
+	int clientes = 0, lit = 0, mediolit = 0, div = 0, tipo1 = 0, tipo2 = 0, mesa1 = 0, mesa2 = 0;
 	tipo1 = rand() % 5;//tipo de cerveza 1
 	tipo2 = rand() % 5;//tipo de cerveza 2
 	clientes = 1 + rand() % 11;
 	div = rand() % clientes + 1;//numero entre 0 y la cantidad de clientes
-	pintas = 1 + rand() % 6;
-	mediaspintas = 1 + rand() % 5;
+	lit = 1 + rand() % 3;
+	mediolit = 1 + rand() % 4;
 	//div sera la cantidad de clientes que van a pedir pintas y clientes - div pediran las medias pintas
 	float litros1 = 0, litros2 = 0, ganancia = 0;
-	litros1 = (float)div * pintas * 0.5;//Cada pinta es medio litro de cerveza
-	litros2 = (float)(clientes - div) * mediaspintas * 0.25;//Cada media pinta es 1/4 litro de cerveza
+	litros1 = (float)div * lit;//Cada pinta es medio litro de cerveza
+	litros2 = (float)(clientes - div) * mediolit;//Cada media pinta es 1/4 litro de cerveza
+	//Convertimos los tipos de cerveza de int a eCerveza
+	eCerveza t1, t2;
+	t1 = ConvertirTipoCerveza(tipo1);
+	t2 = ConvertirTipoCerveza(tipo2);
 	//Actualizamos la cantidad de litros de cada cerveza, dependiendo del tipo que se compro en cada caso y calculamos la ganancia total de la simulacion
-	for (int i = 0; i < Cervezas.CA; ++i)
+	for (int i = 0; i < Cervezas.getCA(); ++i)
 	{
-		if (Cervezas[i]->getTipo() == tipo1)
+		if (Cervezas[i]->getTipo() == t1)
 		{
 			if (Cervezas[i]->getCantLitros() >= litros1)
 
 			{
 				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros1);
-				ganancia += (float)div * pintas * Cervezas[i]->getPrecio_Pinta();
+				ganancia += (float)div * lit * Cervezas[i]->getPrecioxLitro();
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
-		if (Cervezas[i]->getTipo() == tipo2)
+		if (Cervezas[i]->getTipo() == t2)
 		{
 			if (Cervezas[i]->getCantLitros() >= litros2)
 			{
 				Cervezas[i]->setLitros(Cervezas[i]->getCantLitros() - litros2);
-				ganancia += (float)(clientes - div) * mediaspintas * Cervezas[i]->getprecio_medi_pinta();
+				ganancia += (float)(clientes - div) * mediolit * Cervezas[i]->getPrecioxLitro()/2;
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
@@ -70,7 +74,7 @@ void cPuntoDeVenta::SimularCliente()
 
 void cPuntoDeVenta::SolicitarCerveza(eCerveza tipo, int cant)
 {
-	for (int i = 0; i < Cervezas.CA; ++i)
+	for (int i = 0; i < Cervezas.getCA(); ++i)
 	{
 		if (Cervezas[i]->getTipo() == tipo)
 		{

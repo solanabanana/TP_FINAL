@@ -28,8 +28,13 @@ float cLocal::getGananciaDiaria()
 void cLocal::setGanancia(float money)
 {
 	GananciaTotal += money - GananciaDiaria;
-	GananciaDiaria = money;
+	GananciaDiaria += money;
 	
+}
+
+void cLocal::setGananciaDiaria(float money)
+{
+	GananciaDiaria = money;
 }
 
 void cLocal::LiberarEncargado()
@@ -48,31 +53,65 @@ void cLocal::setLitrosVendidos(float litros)
 	LitrosVendidosDiarios += litros;
 }
 
+void cLocal::setLitrosVendidosDiarios(float litros)
+{
+	LitrosVendidosDiarios = litros;
+}
+
+eCerveza cLocal::ConvertirTipoCerveza(int tipo)
+{
+	eCerveza Tipo;
+	if (tipo == 0)Tipo = RUBIA;
+	if (tipo == 1)Tipo = NEGRA;
+	if (tipo == 2)Tipo = ROJA;
+	if (tipo == 3)Tipo = IPA;
+	if (tipo == 4)Tipo = HONEY;
+	return Tipo;
+}
+
 void cLocal::FinDeJornada()
 {//Se retiran todos los empleados y se deja todo okay
 	//Se registra la salida de los empleados
 	cFecha* salida = new cFecha(0, 0, 0, 0, 0);
 	salida->setHoy();
 	//Si el encargado todavia esta en el local, tambien se registra su salida
-	if(Encargado != NULL) Encargado->Salida.AgregarObjeto(salida);
+	if(Encargado != NULL) Encargado->Salida->AgregarObjeto(salida);
+	Encargado->CalcularHorasTrabajadas();
 	for (int i = 0; i < Empleados.getCA(); ++i)
 	{
-		Empleados[i]->Salida.AgregarObjeto(salida);
+		Empleados[i]->Salida->AgregarObjeto(salida);
+		cMozo* auxm = dynamic_cast<cMozo*>(Empleados[i]);
+		if (auxm != NULL) auxm->CalcularHorasTrabajadas();
+		else
+		{
+			cVendedor* auxv = dynamic_cast<cVendedor*>(Empleados[i]);
+			auxv->CalcularHorasTrabajadas();
+		}
 	}
 	//Se retiran todos los empleados que aun esten en el local
 	Empleados.QuitarTodos();
 	//Se ponen los datos diarios a cero
-	GananciaDiaria = 0;
-	LitrosVendidosDiarios = 0;
+	//Imprimimos los datos del local.
+	cout << this;
+}
+void cLocal::ImprimirEmpleados()
+{
+	cout << this;
+	cout << "Encargado: " << endl;
+	Encargado->ImprimirEmpleado();
+	for (int i = 0; i < Empleados.getCA(); ++i)
+	{
+		Empleados[i]->ImprimirEmpleado();
+	}
 }
 //sobrecarga del operador
 ostream& operator<<(ostream& os, const cLocal* local)
 {
 	os << "Nombre: " << local->Nombre << endl;
 	os << "Ubicacion: " << local->Ubicacion << endl;
-	os << "Codigo" << local->Numero << endl;
+	os << "Codigo: " << local->Numero << endl;
 	os << "Litros Vendidos: " << local->LitrosVendidosDiarios << endl;
-	os << "Monto total: " << local->GananciaDiaria << endl;
+	os << "Monto total: " << local->GananciaDiaria << endl << endl;
 	return os;
 	
 }

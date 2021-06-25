@@ -8,11 +8,11 @@ class cCerveceria
 	//una lista de estos mismos locales
 	float GananciaTotal;
 	float GananciaDiaria;
-	cListaT<cLocal> Locales;
+	cListaT<cLocal>* Locales;
 
 public:
 	//constructor y destructor
-	cCerveceria(cListaT<cLocal> locales);
+	cCerveceria(cListaT<cLocal>& locales);
 	~cCerveceria();
 	float CalcularGananciaTotal();//Calcula la ganancia total de nuestra cervecería
 	void Historial();//se muestra una lista de litros vendidos y el monto total de cada local y la ganancia total de la cervecería

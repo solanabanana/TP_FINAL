@@ -20,25 +20,25 @@ void cEncargado::CalcularHorasTrabajadas()
 	int horaE = 0;
 	int horaS = 0;
 	//for que recorra toda la lista y nos guarde en el auxiliar la hora de  entrada y salida del empleado
-	for (int i = 0; i < Entrada.getCA(); i++)
+	for (int i = 0; i < Entrada->getCA(); i++)
 	{
-		horaE = Entrada[i]->getHoras();
+		horaE = Entrada[0][i]->getHoras();
 	}
-	for (int i = 0; i < Salida.getCA(); i++)
+	for (int i = 0; i < Salida->getCA(); i++)
 	{
-		horaS = Salida[i]->getHoras();
+		horaS = Salida[0][i]->getHoras();
 	}
 	//inicializamos variables auxiliares
 	int MinutoE = 0;
 	int MinutoS = 0;
 	//for que recorra toda la lista y nos guarde en el auxiliar los minutos de entrada y salida del empleado
-	for (int i = 0; i < Entrada.getCA(); i++)
+	for (int i = 0; i < Entrada->getCA(); i++)
 	{
-		MinutoE = Entrada[i]->getMinutos();
+		MinutoE = Entrada[0][i]->getMinutos();
 	}
-	for (int i = 0; i < Salida.getCA(); i++)
+	for (int i = 0; i < Salida->getCA(); i++)
 	{
-		MinutoS = Salida[i]->getMinutos();
+		MinutoS = Salida[0][i]->getMinutos();
 	}
 	//restamos la salida a la entrada para obtener el total de tiempo trabajado
 	int totalM = MinutoS - MinutoE;

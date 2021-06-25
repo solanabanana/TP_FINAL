@@ -2,8 +2,9 @@
 #include "cBar.h"
 #include"cPuntoDeVenta.h"
 //constructor y destructor
-cCerveceria::cCerveceria(cListaT<cLocal> locales)
+cCerveceria::cCerveceria(cListaT<cLocal>& locales)
 {
+	Locales = new cListaT<cLocal>(locales);
 	GananciaDiaria = 0;
 	GananciaTotal = 0;
 }
@@ -15,20 +16,24 @@ cCerveceria::~cCerveceria()
 float cCerveceria::CalcularGananciaTotal(){
 
 
-	for (unsigned int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
+	for (unsigned int i = 0; i < Locales->getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos dynamic cast para ver si es bar o no
-		if (aux != NULL)
+		cBar* auxb = dynamic_cast<cBar*>(Locales[0][i]);//hacemos dynamic cast para ver si es bar o no
+		if (auxb != NULL)
 		{
-			GananciaDiaria += aux->getGananciaDiaria();//si es un bar llamamos a su getter y actualizamos el atributo
-			GananciaTotal += GananciaDiaria;
+			GananciaDiaria += auxb->getGananciaDiaria();//si es un bar llamamos a su getter y actualizamos el atributo
+			GananciaTotal += auxb->getGananciaDiaria();
+			auxb->setGananciaDiaria(0);
+			auxb->setLitrosVendidosDiarios(0);
 		}
 		else//si no es bar es punto de venta
 		{
-			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos dynamic cast
+			cPuntoDeVenta *aux = dynamic_cast<cPuntoDeVenta*>(Locales[0][i]);//hacemos dynamic cast
 
 			GananciaDiaria += aux->getGananciaDiaria();// llamamos a su getter y actualizamos el atributo
-			GananciaTotal += GananciaDiaria;
+			GananciaTotal += aux->getGananciaDiaria();
+			aux->setGananciaDiaria(0);
+			aux->setLitrosVendidosDiarios(0);
 		}
 	}
 
@@ -37,18 +42,17 @@ float cCerveceria::CalcularGananciaTotal(){
 }
 
 void cCerveceria::Historial()
-{//imrimirmos la lista de locales
-	for (int i = 0; i < Locales.getCA(); i++)
-	{
-		cout << Locales[i]<<endl;
-	}
+{
+	CalcularGananciaTotal();
+	cout << "La ganancia del dia es " << GananciaDiaria << endl;
+	cout << "La ganancia total hasta el dia de hoy es " << GananciaTotal << endl;
 }
 
 void cCerveceria::TICK()
 {
-	for (int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
+	for (int i = 0; i < Locales->getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos dynamic cast
+		cBar* aux = dynamic_cast<cBar*>(Locales[0][i]);//hacemos dynamic cast
 		if (aux != NULL)
 		{
 			try {
@@ -62,7 +66,7 @@ void cCerveceria::TICK()
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos dynamic cast
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[0][i]);//hacemos dynamic cast
 			try {
 				aux->SimularCliente();//llamamos a simular cliente
 			}
@@ -77,21 +81,18 @@ void cCerveceria::TICK()
 
 void cCerveceria::FinalizarJornada() {
 
-	for (int i = 0; i < Locales.getCA(); i++)//recorremos la lista de locales
+	for (int i = 0; i < Locales->getCA(); i++)//recorremos la lista de locales
 	{
-		cBar* aux = dynamic_cast<cBar*>(Locales[i]);//hacemos sya=namic cast
+		cBar* aux = dynamic_cast<cBar*>(Locales[0][i]);//hacemos sya=namic cast
 		if (aux != NULL)
 		{
 			aux->FinDeJornada();//llamamos a finalizar jornada
-			GananciaTotal = 0;//setteamos el atributo
-			Historial();//imprimimos
 		}
 		else
 		{
-			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[i]);//hacemos synamic cast
+			cPuntoDeVenta* aux = dynamic_cast<cPuntoDeVenta*>(Locales[0][i]);//hacemos synamic cast
 			aux->FinDeJornada();//llamamos a finalizar jornada
-			GananciaTotal = 0;
-			Historial();//imrimimos 
 		}
 	}
+	Historial();//Imprimimos
 }

@@ -9,8 +9,10 @@ cFecha::cFecha(int Min, int Hor, int dia, int mes, int anio)
 	Anio = anio;
 }
 //implemento los setters
-void cFecha::setActualizar(int dia, int mes, int anio)
+void cFecha::setActualizar(int minutos, int horas,int dia, int mes, int anio)
 {
+	Minutos = minutos;
+	Horas = horas;
 	Dia = dia;
 	Mes = mes;
 	Anio = anio;
@@ -19,7 +21,7 @@ void cFecha::setHoy()
 {
 	time_t t = time(0);
 	tm* now = localtime(&t);
-	setActualizar(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
+	setActualizar(now->tm_min, now->tm_hour,now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
 }
 //implementacion del to string e imprimir
 inline string cFecha::to_stringFecha()

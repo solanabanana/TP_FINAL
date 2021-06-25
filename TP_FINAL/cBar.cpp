@@ -8,7 +8,7 @@ cBar::cBar(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado>
 void cBar::SimularCliente() 
 {//Aca simulamos que llegan de 1 a 10 clientes y que algunos pediran de 1 a 5 pintas y los demas de 1 a 4 medias pintas
 	srand(time(NULL));
-	int clientes = 0, pintas = 0, mediaspintas = 0, div = 0, tipo1 = 0, tipo2 = 0, mesa1 = 0, mesa2 = 0;
+	int clientes = 0, pintas = 0, mediaspintas = 0, div = 0, tipo1 = 0, tipo2 = 0, mesa1 = -1, mesa2 = -1;
 	tipo1 = rand() % 5;//tipo de cerveza 1
 	tipo2 = rand() % 5;//tipo de cerveza 2
 	clientes = 1 + rand() % 11;
@@ -19,29 +19,37 @@ void cBar::SimularCliente()
 	float litros1 = 0, litros2 = 0, ganancia = 0;
 	litros1 = (float)div * (float)pintas * 0.5;//Cada pinta es medio litro de cerveza
 	litros2 = (float)(clientes - div) * (float)mediaspintas * 0.25;//Cada media pinta es 1/4 litro de cerveza
+	//Convertimos los tipos de cerveza de int a eCerveza
+	eCerveza t1, t2;
+	t1 = ConvertirTipoCerveza(tipo1);
+	t2 = ConvertirTipoCerveza(tipo2);
 	//Hacemos que nuestros dos grupos de clientes ocupen dos mesas libres y ya ponemos que estan sucias
-	for (unsigned int i = 0; i < Mesas.CA; ++i)
+	for (unsigned int i = 0; i < Mesas.getCA(); ++i)
 	{
 		if (Mesas[i]->getOcupada() == false)
 		{
+			Mesas[i]->setEstado_(true);
 			Mesas[i]->setCantidadClientes(div);
 			Mesas[i]->setLimpia(false);
 			mesa1 = Mesas[i]->getNumMesa();
 		}
+		if (mesa1 > 0) break;
 	}
-	for (unsigned int i = 0; i < Mesas.CA; ++i)
+	for (unsigned int i = 0; i < Mesas.getCA(); ++i)
 	{
 		if (Mesas[i]->getOcupada() == false)
 		{
+			Mesas[i]->setEstado_(true);
 			Mesas[i]->setCantidadClientes(clientes - div);
 			Mesas[i]->setLimpia(false);
 			mesa2 = Mesas[i]->getNumMesa();
 		}
+		if (mesa2 > 0) break;
 	}
 	//Actualizamos la cantidad de litros de cada cerveza, dependiendo del tipo que se compro en cada caso y calculamos la ganancia total de la simulacion
-	for (unsigned int i = 0; i < Cervezas.CA; ++i)
+	for (unsigned int i = 0; i < Cervezas.getCA(); ++i)
 	{
-		if (Cervezas[i]->getTipo() == tipo1)
+		if (Cervezas[i]->getTipo() == t1)
 		{
 			if (Cervezas[i]->getCantLitros() >= litros1)
 
@@ -51,7 +59,7 @@ void cBar::SimularCliente()
 			}
 			else throw new exception("No hay suficiente cerveza de este tipo");
 		}
-		if (Cervezas[i]->getTipo() == tipo2)
+		if (Cervezas[i]->getTipo() == t2)
 		{
 			if (Cervezas[i]->getCantLitros() >= litros2)
 			{
@@ -68,7 +76,7 @@ void cBar::SimularCliente()
 	for (unsigned int j = 0; j < Empleados.CA; ++j)//recorremos la lista de empleados
 	{
 		mozo = dynamic_cast<cMozo*>(Empleados[j]);//a cada empleado hacemos el dynamic cast cMozo
-		if (mozo != NULL && Empleados[j]->getOcupado() == true)//Si el empleado es un mozo y esta libre
+		if (mozo != NULL && Empleados[j]->getOcupado() == false)//Si el empleado es un mozo y esta libre
 		{//Los setOcupado() son mas simulacion que todo, porque no tienen ningun proposito
 			Empleados[j]->setOcupado(true);//Lo ponemos como ocupado
 			mozo->LimpiarMesa(mesa1, this);//El mozo limpia la mesa
@@ -76,7 +84,7 @@ void cBar::SimularCliente()
 			for (int k = j; k < Empleados.CA; ++k)//No queremos que el mismo mozo limpie las dos mesas
 			{
 				mozo = dynamic_cast<cMozo*>(Empleados[k]);
-				if (mozo != NULL && Empleados[k]->getOcupado() == true)//Si el empleado es un mozo y esta libre
+				if (mozo != NULL && Empleados[k]->getOcupado() == false)//Si el empleado es un mozo y esta libre
 				{
 					Empleados[k]->setOcupado(true);//Lo ponemos como ocupado
 					mozo->LimpiarMesa(mesa2, this);//El mozo limpia la mesa

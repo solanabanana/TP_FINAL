@@ -15,7 +15,7 @@ public:
 	cFecha(int Min, int Hor, int dia, int mes, int anio);
 	~cFecha() {};
 	//setters
-	void setActualizar(int dia, int mes, int anio);
+	void setActualizar(int minutos, int horas, int dia, int mes, int anio);
 	void setHoy();
 	//to string e imprimir
 	string to_stringFecha();

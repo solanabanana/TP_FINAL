@@ -33,7 +33,8 @@ public:
 	void operator-(T* objeto);
 	T* operator[](string clave)
 	{
-		return BuscarObjeto(clave);
+		int pos = BuscarObjetoPos(clave);
+		if (pos < TAM) return lista[pos];
 	}
 	T* operator[](unsigned int pos)
 	{
@@ -143,6 +144,10 @@ template<class T>
 inline void cListaT<T>::QuitarTodos()
 {
 	//for que quite todos los objetos de la lista
+	for (int i = 0; i < CA; ++i)
+	{
+		QuitarObjeto(lista[i]->getClave());
+	}
 }
 
 template<class T>

@@ -153,7 +153,6 @@
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C4996</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="cVendedor.cpp" />
-    <ClCompile Include="Simulador.cpp" />
     <ClCompile Include="TP_FINAL.cpp" />
   </ItemGroup>
   <ItemGroup>
