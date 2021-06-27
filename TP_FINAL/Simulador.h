@@ -7,9 +7,10 @@
 void AgregarCervezas(cListaT<cCerveza>&cervezas_bar, cListaT<cCerveza>& cervezas_puntoventa) 
 	{	//Nos creamos cervezas para el bar y el punto de venta y las agregamos a sus listas
 		cCerveza* nueva_cerveza;
-		nueva_cerveza = new cCerveza(eCerveza::RUBIA, 1, 500, 200, 100);
+		nueva_cerveza = new cCerveza(eCerveza::RUBIA, 2, 450, 200, 300);
 		cervezas_bar + nueva_cerveza;
-		nueva_cerveza = new cCerveza(eCerveza::RUBIA, 2, 450, 0, 0);
+		nueva_cerveza = new cCerveza(eCerveza::RUBIA, 0, 0, 0, 0);
+		cin >> *nueva_cerveza;//Probamos la sobrecarga del operador >>
 		cervezas_puntoventa + nueva_cerveza;
 		nueva_cerveza = new cCerveza(eCerveza::HONEY, 3, 550, 250, 150);
 		cervezas_bar + nueva_cerveza;

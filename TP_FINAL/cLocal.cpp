@@ -1,8 +1,10 @@
 #include "cLocal.h"
 #include "cFecha.h"
 //construcro por parametros
+int cLocal::counter = 0;
 cLocal::cLocal(cEncargado* encargado, cListaT<cCerveza> cervezas, cListaT<cEmpleado> empleados, string nombre, int numero, string ubicacion): Nombre(nombre), Numero(numero), Ubicacion(ubicacion)
 {
+	counter++;
 	Empleados = empleados;
 	Encargado = encargado;
 	Cervezas = cervezas;
@@ -93,6 +95,10 @@ void cLocal::FinDeJornada()
 	//Se ponen los datos diarios a cero
 	//Imprimimos los datos del local.
 	cout << this;
+}
+int cLocal::getCounter()
+{
+	return counter;
 }
 void cLocal::ImprimirEmpleados()
 {

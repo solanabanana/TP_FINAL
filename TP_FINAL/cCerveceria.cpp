@@ -60,6 +60,7 @@ void cCerveceria::TICK()
 			}
 			catch (exception* ex)
 			{
+				aux->ChequearStock();
 				cout << ex->what() << endl;
 				delete ex;
 			}
@@ -71,7 +72,7 @@ void cCerveceria::TICK()
 				aux->SimularCliente();//llamamos a simular cliente
 			}
 			catch(exception*ex){
-
+				aux->ChequearStock();
 				cout << ex->what() << endl;
 				delete ex;
 			}

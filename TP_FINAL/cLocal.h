@@ -19,6 +19,7 @@ protected:
 	const string Ubicacion;
 	float GananciaDiaria;
 	float GananciaTotal;
+	static int counter;
 	friend class cEncargado;//friend de clase encargado
 
 public:
@@ -36,6 +37,7 @@ public:
 	void setLitrosVendidosDiarios(float litros);
 	eCerveza ConvertirTipoCerveza(int tipo);
 	void FinDeJornada();//Se retiran todos los empleados y se deja todo okay
+	static int getCounter();
 	//metodos virtual a heredar 
 	virtual void SimularCliente()  = 0;
 	virtual void SolicitarCerveza(eCerveza tipo, int cant)  = 0;
